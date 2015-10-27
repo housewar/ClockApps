@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<title>Clock Apps</title>
+<!--Bootstrap-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<!--Custom CSS-->
+<link rel="stylesheet" type="text/css" href="main.css">
+<!--JQuery-->
+<script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!--Custom Scripts-->
+<script type='text/javascript' src="formatTime.js"></script>
+<script type='text/javascript' src="clock.js"></script>
+<script type='text/javascript' src="stopwatch.js"></script>
+<script type='text/javascript' src="main.js"></script>
+
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <ul id="nav-links" class="nav navbar-nav">
+          <li id="clock-li"><a id="clock-nav" href="#" data-page="#clock">Clock</a></li>
+          <li id="stopwatch-li"><a id="stopwatch-nav" href="#" data-page="#stopwatch">Stopwatch</a></li>
+          <li id="timer-li"><a id="timer-nav" href="#" data-page="#timer">Timer</a></li>
+          <li id="pomodoro-li"><a id="pomodoro-nav" href="#" data-page="#pomodoro">Pomodoro</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div id="clock-page" class="container no-display">
+    <div class="jumbotron">
+      <p>time</p>
+      <h1><span id="clock">00:00:00</span><span id="clockMS" class="msec">00</span></h1>
+    </div>
+  </div>
+  <div id="stopwatch-page" class="container no-display">
+    <div class="jumbotron">
+	  <p>stopwatch</p>
+      <h1><span id="stopwatch">00:00:00</span><span id="stopwatchMS" class="msec">00</span></h1>
+      <div class="row">
+        <div class="col-xs-1 col-xs-offset-4">
+          <button id="lapReset-btn" class="btn hidden">
+            <span id="lapReset-span" class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="col-xs-2">
+          <button id="playPause-btn" class="btn">
+            <span id="playPause-span" class="glyphicon glyphicon-play" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+      <div id="lap-row" class="row">
+      	<div id="lap-output-count" class="col-xs-2 col-xs-offset-3">
+      	</div>
+      	<div id="lap-output-lap" class="col-xs-2">
+      	</div>
+      	<div id="lap-output-split" class="col-xs-2">
+      	</div>
+      </div>
+    </div>
+  </div>
+  <div id="timer-page" class="container no-display">
+    <div class="jumbotron">
+      <p>timer<p/>
+      <h1><span id="timer">00:00:00</span><span id="timerMS" class="msec">00</span></h1>
+    </div>
+  </div>
+  <div id="pomodoro-page" class="container no-display">
+    <div class="jumbotron">
+      <p>pomodoro<p/>
+      <h1><span id="pomodoro">00:00:00</span><span id="pomodoroMS" class="msec">00</span></h1>
+    </div>
+  </div>
+</body>
+</html>

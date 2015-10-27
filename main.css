@@ -1,0 +1,43 @@
+body {
+	padding-top: 70px;
+}
+
+.jumbotron {
+	text-align: center;
+	background-color: white;
+}
+
+.msec {
+	font-size: 50%;
+}
+
+hidden {
+	visibility: hidden;
+}
+
+#clockMS {
+	font-size: 50%;
+}
+
+.no-display{
+	display: none;
+}
+
+#lap-row {
+	margin-top: 50px;
+}
+#lap-col-1{
+	text-align: right;
+}
+
+#lap-col-2 {
+	text-align: center;
+}
+
+#lap-col-3 {
+	text-align: left;
+}
+
+.red-text{
+color: red;
+}
