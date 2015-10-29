@@ -1,3 +1,18 @@
+function formatClock(time){
+	var hours = time.getHours();
+	if (hours > 12){
+	hours -= 12;
+	}
+	return [hours, ("00" + time.getMinutes()).slice(-2)].join(":");
+}
+function formatClockAMPM(time){
+	var hours = time.getHours();
+	if (hours > 12) {
+		return "PM";
+	} else {
+		return "AM";
+	}
+}
 function formatStdTime(time){
 	return [('00' + time.getHours()).slice(-2),
 			('00' + time.getMinutes()).slice(-2),

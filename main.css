@@ -41,3 +41,13 @@ hidden {
 .red-text{
 color: red;
 }
+.numpad-container {
+width: 200px;
+}
+#timer-numpad button {
+margin: 2px 2px 2px 2px;
+width: 42px;
+height: 42px;
+padding: auto;
+background-color: #ffffff;
+}

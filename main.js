@@ -77,4 +77,48 @@ $(document).ready(function() {
 			$("#lapReset-btn").addClass("hidden"); //hide the reset button
 		}
 	});
+	
+	//This next section is for the timer page.
+	
+	myTimer = new Timer();
+	var timerPlayPause = true; //initialize as play;
+	var timerResume = false; //play, not resume;
+	var timerBackReset = true; //backspace, not reset;
+	
+	//each of the numbers has an associated value,
+	//which is passed through to addDigit
+	$("#timer-numpad").delegate('button','click',function(){
+		myTimer.addDigit($(this).attr('value'));
+	});
+	$("#timerBackspace-btn").click(function(){
+		if (timerBackReset) {
+			myTimer.backspace();
+		} else {
+			myTimer.reset();
+			timerResume = false;
+		}		
+	});
+	$("#timerPlayPause-btn").click(function(){
+		if (timerPlayPause) {
+			
+			if (timerResume) {
+				myTimer.resume();
+			} else {
+				myTimer.start();
+				timerBackReset = false;
+			}
+			
+			$("#timerPlayPause-span").removeClass("glyphicon-play");
+			$("#timerPlayPause-span").addClass("glyphicon-pause");
+			
+			timerPlayPause = false;
+			
+		} else {
+			myTimer.pause();
+			timerResume = true;
+			$("#timerPlayPause-span").removeClass("glyphicon-pause");
+			$("#timerPlayPause-span").addClass("glyphicon-play");
+			timerPlayPause = true;
+		}
+	});
 });
