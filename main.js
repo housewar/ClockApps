@@ -7,7 +7,15 @@ $(document).ready(function() {
 	$(activePage + "-li").addClass("active"); //set the navbar link to active
 	$(activePage + "-page").removeClass("no-display"); //display the page
 
-	updateClock(); //starts the clock running on the front page; function in clock.js
+	//update time and display on the clock page	
+	function updateClock(){
+	clockTime = new Date();
+	$("#clock").text(formatClock(clockTime));
+	$("#clockMS").text(formatClockAMPM(clockTime));
+	rafClock = requestAnimationFrame(updateClock);
+	}
+	
+	updateClock();
 
 	//remove the "active" class from the old nav item and add it to the new one
 	//add "no-display" class to the old page, and remove it from the new.
@@ -94,13 +102,15 @@ $(document).ready(function() {
 		if (timerBackReset) {
 			myTimer.backspace();
 		} else {
+			$("#timerBackspace-span").removeClass("glyphicon-refresh");
+			$("#timerBackspace-span").addClass("glyphicon-chevron-left");
 			myTimer.reset();
 			timerResume = false;
 		}		
 	});
 	$("#timerPlayPause-btn").click(function(){
 		if (timerPlayPause) {
-			
+			$("#timerBackspace-btn").addClass("hidden");
 			if (timerResume) {
 				myTimer.resume();
 			} else {
@@ -114,6 +124,9 @@ $(document).ready(function() {
 			timerPlayPause = false;
 			
 		} else {
+			$("#timerBackspace-span").removeClass("glyphicon-chevron-left");
+			$("#timerBackspace-span").addClass("glyphicon-refresh");
+			$("#timerBackspace-btn").removeClass("hidden");
 			myTimer.pause();
 			timerResume = true;
 			$("#timerPlayPause-span").removeClass("glyphicon-pause");
