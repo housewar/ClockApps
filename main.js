@@ -7,7 +7,15 @@ $(document).ready(function() {
 	$(activePage + "-li").addClass("active"); //set the navbar link to active
 	$(activePage + "-page").removeClass("no-display"); //display the page
 
-	updateClock(); //starts the clock running on the front page; function in clock.js
+	//update time and display on the clock page	
+	function updateClock(){
+	clockTime = new Date();
+	$("#clock").text(formatClock(clockTime));
+	$("#clockMS").text(formatClockAMPM(clockTime));
+	rafClock = requestAnimationFrame(updateClock);
+	}
+	
+	updateClock();
 
 	//remove the "active" class from the old nav item and add it to the new one
 	//add "no-display" class to the old page, and remove it from the new.
@@ -75,6 +83,55 @@ $(document).ready(function() {
 			lapReset = true; //change lapReset btn function to lap
 			swResume = false; //set play button function to start from zero, not resume
 			$("#lapReset-btn").addClass("hidden"); //hide the reset button
+		}
+	});
+	
+	//This next section is for the timer page.
+	
+	myTimer = new Timer();
+	var timerPlayPause = true; //initialize as play;
+	var timerResume = false; //play, not resume;
+	var timerBackReset = true; //backspace, not reset;
+	
+	//each of the numbers has an associated value,
+	//which is passed through to addDigit
+	$("#timer-numpad").delegate('button','click',function(){
+		myTimer.addDigit($(this).attr('value'));
+	});
+	$("#timerBackspace-btn").click(function(){
+		if (timerBackReset) {
+			myTimer.backspace();
+		} else {
+			$("#timerBackspace-span").removeClass("glyphicon-refresh");
+			$("#timerBackspace-span").addClass("glyphicon-chevron-left");
+			myTimer.reset();
+			timerResume = false;
+		}		
+	});
+	$("#timerPlayPause-btn").click(function(){
+		if (timerPlayPause) {
+			$("#timerBackspace-btn").addClass("hidden");
+			if (timerResume) {
+				myTimer.resume();
+			} else {
+				myTimer.start();
+				timerBackReset = false;
+			}
+			
+			$("#timerPlayPause-span").removeClass("glyphicon-play");
+			$("#timerPlayPause-span").addClass("glyphicon-pause");
+			
+			timerPlayPause = false;
+			
+		} else {
+			$("#timerBackspace-span").removeClass("glyphicon-chevron-left");
+			$("#timerBackspace-span").addClass("glyphicon-refresh");
+			$("#timerBackspace-btn").removeClass("hidden");
+			myTimer.pause();
+			timerResume = true;
+			$("#timerPlayPause-span").removeClass("glyphicon-pause");
+			$("#timerPlayPause-span").addClass("glyphicon-play");
+			timerPlayPause = true;
 		}
 	});
 });

@@ -15,10 +15,6 @@ hidden {
 	visibility: hidden;
 }
 
-#clockMS {
-	font-size: 50%;
-}
-
 .no-display{
 	display: none;
 }
@@ -40,4 +36,15 @@ hidden {
 
 .red-text{
 color: red;
+}
+#timer-numpad button {
+background-color: #ffffff;
+padding: 0 5% 0 5%;
+}
+#timerPlayPause-btn {
+margin-top: 16px;
+}
+.btn-primary,
+.btn-warning {
+padding: 12px;
 }

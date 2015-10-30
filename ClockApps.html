@@ -7,16 +7,21 @@
 <link rel="stylesheet" type="text/css" href="main.css">
 <!--JQuery-->
 <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!--Bootstrap Navbar-->
+<script type='text/javascript' src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <!--Custom Scripts-->
 <script type='text/javascript' src="formatTime.js"></script>
-<script type='text/javascript' src="clock.js"></script>
 <script type='text/javascript' src="stopwatch.js"></script>
+<script type='text/javascript' src="timer.js"></script>
 <script type='text/javascript' src="main.js"></script>
 
 <body>
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
-      <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="glyphicon glyphicon-menu-hamburger navbar-custom"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="myNavbar">
         <ul id="nav-links" class="nav navbar-nav">
           <li id="clock-li"><a id="clock-nav" href="#" data-page="#clock">Clock</a></li>
           <li id="stopwatch-li"><a id="stopwatch-nav" href="#" data-page="#stopwatch">Stopwatch</a></li>
@@ -26,24 +31,23 @@
       </div>
     </div>
   </nav>
+  <main>
   <div id="clock-page" class="container no-display">
     <div class="jumbotron">
-      <p>time</p>
-      <h1><span id="clock">00:00:00</span><span id="clockMS" class="msec">00</span></h1>
+      <h1><span id="clock"></span><span id="clockMS" class="msec"></span></h1>
     </div>
   </div>
   <div id="stopwatch-page" class="container no-display">
     <div class="jumbotron">
-	  <p>stopwatch</p>
       <h1><span id="stopwatch">00:00:00</span><span id="stopwatchMS" class="msec">00</span></h1>
       <div class="row">
         <div class="col-xs-1 col-xs-offset-4">
-          <button id="lapReset-btn" class="btn hidden">
+          <button id="lapReset-btn" class="btn btn-primary hidden">
             <span id="lapReset-span" class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
           </button>
         </div>
         <div class="col-xs-2">
-          <button id="playPause-btn" class="btn">
+          <button id="playPause-btn" class="btn btn-primary">
             <span id="playPause-span" class="glyphicon glyphicon-play" aria-hidden="true"></span>
           </button>
         </div>
@@ -60,15 +64,65 @@
   </div>
   <div id="timer-page" class="container no-display">
     <div class="jumbotron">
-      <p>timer<p/>
-      <h1><span id="timer">00:00:00</span><span id="timerMS" class="msec">00</span></h1>
+      <h1>
+      	<span id="timerH">0</span><span class="msec">h</span><span id="timerM">00</span><span class="msec">m</span><span id="timerS">00</span><span class="msec">s</span></span>
+      	<button id="timerBackspace-btn" class="btn btn-warning">
+      		<span id="timerBackspace-span" class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      	</button>
+      </h1>
+      <div id="timer-numpad">
+      	<button class="btn" value="7"><h2>7</h2></button>
+	  	<button class="btn" value="8"><h2>8</h2></button>
+      	<button class="btn" value="9"><h2>9</h2></button><br>
+      	<button class="btn" value="4"><h2>4</h2></button>
+      	<button class="btn" value="5"><h2>5</h2></button>
+	  	<button class="btn" value="6"><h2>6</h2></button><br>
+      	<button class="btn" value="1"><h2>1</h2></button>
+      	<button class="btn" value="2"><h2>2</h2></button>
+      	<button class="btn" value="3"><h2>3</h2></button><br>
+      	<button class="btn hidden"></button>
+      	<button class="btn" value="0"><h2>0</h2></button>
+      	<button class="btn hidden"></button>
+      </div>
+      <button class="btn hidden"></button>
+      <button id="timerPlayPause-btn" class="btn btn-primary">
+	  	<span id="timerPlayPause-span" class="glyphicon glyphicon-play" aria-hidden="true"></span>
+      </button>
+      <button class="btn hidden"></button>
     </div>
   </div>
   <div id="pomodoro-page" class="container no-display">
     <div class="jumbotron">
-      <p>pomodoro<p/>
-      <h1><span id="pomodoro">00:00:00</span><span id="pomodoroMS" class="msec">00</span></h1>
+      <div class="row">
+      	<div class="col-xs-2 col-xs-offset-4">
+      		<p>work</p>
+      	</div>
+      	<div class="col-xs-2">
+      		<p>break</p>
+      	</div>
+      </div>
+      <div class="row">
+      	<div class="col-xs-2 col-xs-offset-4">
+      		<h2><span id="pomodoroWork">00</span><span class="msec">m</span>
+      		<div class="btn-group btn-group-xs" role="group">
+      			<button class="btn btn-primary"><span id="pomoWorkSub" class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
+      			<button class="btn btn-primary"><span id="pomoWorkAdd" class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+      		</div>
+      		</h2>
+      	</div>
+      	<div class="col-xs-2">
+      		<h2><span id="pomodoroBreak">00</span><span class="msec">m</span>
+      		<div class="btn-group btn-group-xs" role="group">
+      			<button class="btn btn-primary"><span id="pomoBreakSub" class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
+      			<button class="btn btn-primary"><span id="pomoBreakAdd" class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+      		</div>
+      		</h2>
+      	</div>
+      </div>
+      <h1><span id="pomodoroM">00</span><span class="msec">m</span><span id="pomodoroS">00</span><span class="msec">s</span></h1>
+      	<button class="btn btn-lg btn-warning"><span id="punchInOut" class="glyphicon glyphicon-time" aria-hidden="true"></span></button>
     </div>
   </div>
+  </main>
 </body>
 </html>
