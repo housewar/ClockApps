@@ -34,13 +34,11 @@
   <main>
   <div id="clock-page" class="container no-display">
     <div class="jumbotron">
-      <p>time</p>
       <h1><span id="clock"></span><span id="clockMS" class="msec"></span></h1>
     </div>
   </div>
   <div id="stopwatch-page" class="container no-display">
     <div class="jumbotron">
-	  <p>stopwatch</p>
       <h1><span id="stopwatch">00:00:00</span><span id="stopwatchMS" class="msec">00</span></h1>
       <div class="row">
         <div class="col-xs-1 col-xs-offset-4">
@@ -66,7 +64,6 @@
   </div>
   <div id="timer-page" class="container no-display">
     <div class="jumbotron">
-      <p>timer<p/>
       <h1>
       	<span id="timerH">0</span><span class="msec">h</span><span id="timerM">00</span><span class="msec">m</span><span id="timerS">00</span><span class="msec">s</span></span>
       	<button id="timerBackspace-btn" class="btn btn-warning">
@@ -96,8 +93,34 @@
   </div>
   <div id="pomodoro-page" class="container no-display">
     <div class="jumbotron">
-      <p>pomodoro<p/>
-      <h1><span id="pomodoro">00:00:00</span></h1>
+      <div class="row">
+      	<div class="col-xs-2 col-xs-offset-4">
+      		<p>work</p>
+      	</div>
+      	<div class="col-xs-2">
+      		<p>break</p>
+      	</div>
+      </div>
+      <div class="row">
+      	<div class="col-xs-2 col-xs-offset-4">
+      		<h2><span id="pomodoroWork">00</span><span class="msec">m</span>
+      		<div class="btn-group btn-group-xs" role="group">
+      			<button class="btn btn-primary"><span id="pomoWorkSub" class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
+      			<button class="btn btn-primary"><span id="pomoWorkAdd" class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+      		</div>
+      		</h2>
+      	</div>
+      	<div class="col-xs-2">
+      		<h2><span id="pomodoroBreak">00</span><span class="msec">m</span>
+      		<div class="btn-group btn-group-xs" role="group">
+      			<button class="btn btn-primary"><span id="pomoBreakSub" class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
+      			<button class="btn btn-primary"><span id="pomoBreakAdd" class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+      		</div>
+      		</h2>
+      	</div>
+      </div>
+      <h1><span id="pomodoroM">00</span><span class="msec">m</span><span id="pomodoroS">00</span><span class="msec">s</span></h1>
+      	<button class="btn btn-lg btn-warning"><span id="punchInOut" class="glyphicon glyphicon-time" aria-hidden="true"></span></button>
     </div>
   </div>
   </main>
