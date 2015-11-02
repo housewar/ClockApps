@@ -1,9 +1,10 @@
-function Timer(value){
+function Timer(){
 	var timerArr = [0,0,0,0,0];
 	var timerDisplay;
 	var timerNow;
 	var timerEnd;
 	var timerLeft;
+	
 	Timer.prototype.addDigit = function(value){
 		timerArr.push(value);
 		timerArr = timerArr.slice(-5);

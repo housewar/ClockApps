@@ -134,4 +134,50 @@ $(document).ready(function() {
 			timerPlayPause = true;
 		}
 	});
+	
+	//This next section is for the pomodoro page.
+	myPomodoro = new Pomodoro();
+	myPomodoro.setWork(25);
+	myPomodoro.setBreak(5);
+	var workBreak = true; //true = work, false = break
+	
+	function updatePomo(){
+		$("#pomodoroM").text(myPomodoro.negChk() + ("00" + myPomodoro.timeLeft().getUTCMinutes()).slice(-2));
+		$("#pomodoroS").text(("00" + myPomodoro.timeLeft().getUTCSeconds()).slice(-2));
+		rafPomo = requestAnimationFrame(updatePomo);
+	}
+	
+	$("#pomodoroWork").text(myPomodoro.workMin);
+	$("#pomodoroBreak").text(myPomodoro.breakMin);
+	
+	$("#pomoWorkSub").click(function(){
+		myPomodoro.workChg(-1);
+		$("#pomodoroWork").text(myPomodoro.workMin);
+	});
+	
+	$("#pomoWorkAdd").click(function(){
+		myPomodoro.workChg(1);
+		$("#pomodoroWork").text(myPomodoro.workMin);
+	});
+	
+	$("#pomoBreakSub").click(function(){
+		myPomodoro.breakChg(-1);
+		$("#pomodoroBreak").text(myPomodoro.breakMin);
+	});
+	
+	$("#pomoBreakAdd").click(function(){
+		myPomodoro.breakChg(1);
+		$("#pomodoroBreak").text(myPomodoro.breakMin);
+	});
+	
+	$("#punchInOut").click(function(){
+		if (workBreak) {
+			myPomodoro.workStart();
+			workBreak = false;
+			updatePomo();
+		} else {
+			myPomodoro.breakStart();
+			workBreak = true;
+		}
+	});
 });
