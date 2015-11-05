@@ -48,3 +48,116 @@ margin-top: 16px;
 .btn-warning {
 padding: 12px;
 }
+.standardAnalog {
+  margin: 0 auto;
+  border-radius: 50%;
+  position: relative;
+  height: 24em;
+  width: 24em;
+}
+.standardAnalog:after {
+  background: #000;
+  border-radius: 50%;
+  content: "";
+  position: absolute;
+  left: 47.5%;
+  top: 47.5%;
+  width: 5%;
+  height: 5%;
+  z-index: 10;
+}
+.minutes-container,
+.hours-container,
+.seconds-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.tick-container {
+  height: 92%;
+  top: 4%;
+  width: 4%;
+  left: 48%;
+  position: absolute;
+}
+.tick {
+	width: 100%;
+	height: 100%;
+	transform-origin: center center;
+	transform: rotate(30deg);
+}
+.tick:before, .tick:after {
+	position:absolute;
+	display:block;
+	content:"";
+	width: 100%;
+	height: 10%;
+	background:#000;
+}
+.tick:after {
+	bottom:0;
+}
+
+.tick-sm-container {
+  height: 90%;
+  top: 5%;
+  width: 1%;
+  left: 49.5%;
+  position: absolute;
+}
+.tick-sm {
+	width: 100%;
+	height: 100%;
+	transform-origin: center center;
+	transform: rotate(6deg);
+}
+.tick-sm:before, .tick-sm:after {
+	position:absolute;
+	display:block;
+	content:"";
+	width: 100%;
+	height: 4%;
+	background:#000;
+}
+.tick-sm:after {
+	bottom:0;
+}
+
+
+.hours {
+  background: #000;
+  height: 20%;
+  left: 48.75%;
+  position: absolute;
+  top: 30%;
+  transform-origin: 50% 100%;
+  width: 2.5%;
+}
+.minutes {
+  background: #000;
+  height: 40%;
+  left: 49%;
+  position: absolute;
+  top: 10%;
+  transform-origin: 50% 100%;
+  width: 2%;
+}
+.m-transition{
+  transition: transform 0.3s cubic-bezier(.4,2.08,.55,.44);
+}
+.seconds {
+  background: #f00;
+  height: 45%;
+  left: 49.5%;
+  position: absolute;
+  top: 14%;
+  transform-origin: 50% 80%;
+  width: 1%;
+  z-index: 8;
+}
+.s-transition {
+	transition: transform 0.2s cubic-bezier(.4,2.08,.55,.44);
+}
