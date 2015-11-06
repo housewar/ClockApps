@@ -51,19 +51,20 @@ padding: 12px;
 .standardAnalog {
   margin: 0 auto;
   border-radius: 50%;
+  background: #fff;
   position: relative;
-  height: 24em;
-  width: 24em;
+  height: 400px;
+  width: 400px;
 }
 .standardAnalog:after {
   background: #000;
   border-radius: 50%;
   content: "";
   position: absolute;
-  left: 47.5%;
-  top: 47.5%;
-  width: 5%;
-  height: 5%;
+  left: 48%;
+  top: 48%;
+  width: 4%;
+  height: 4%;
   z-index: 10;
 }
 .minutes-container,
@@ -77,13 +78,32 @@ padding: 12px;
 }
 
 .tick-container {
-  height: 92%;
-  top: 4%;
-  width: 4%;
-  left: 48%;
+  height: 96%;
+  width: 2%;
   position: absolute;
+  left: 49%;
+  top: 2%;
+}
+.tock-container {
+  height: 96%;
+  width: 4%;
+  position: absolute;
+  left: 48%;
+  top: 2%;
 }
 .tick {
+	width: 100%;
+	height: 100%;
+	transform-origin: center center;
+	transform: rotate(6deg);
+}
+.skip {
+	width: 100%;
+  height: 100%;
+  transform-origin: center center;
+	transform: rotate(6deg);
+}
+.tock {
 	width: 100%;
 	height: 100%;
 	transform-origin: center center;
@@ -94,55 +114,39 @@ padding: 12px;
 	display:block;
 	content:"";
 	width: 100%;
-	height: 10%;
+	height: 4%;
 	background:#000;
 }
 .tick:after {
 	bottom:0;
-}
-
-.tick-sm-container {
-  height: 90%;
-  top: 5%;
-  width: 1%;
-  left: 49.5%;
-  position: absolute;
-}
-.tick-sm {
-	width: 100%;
-	height: 100%;
-	transform-origin: center center;
-	transform: rotate(6deg);
-}
-.tick-sm:before, .tick-sm:after {
+}.tock:before, .tock:after {
 	position:absolute;
 	display:block;
 	content:"";
 	width: 100%;
-	height: 4%;
+	height: 8%;
 	background:#000;
 }
-.tick-sm:after {
+.tock:after {
 	bottom:0;
 }
 
-
 .hours {
   background: #000;
-  height: 20%;
-  left: 48.75%;
+  height: 35%;
+  left: 48.5%;
   position: absolute;
-  top: 30%;
-  transform-origin: 50% 100%;
-  width: 2.5%;
+  top: 23.75%;
+  transform-origin: 50% 75%;
+  width: 3%;
 }
 .minutes {
   background: #000;
-  height: 40%;
+  height: 50%;
   left: 49%;
   position: absolute;
   top: 10%;
-  transform-origin: 50% 100%;
+  transform-origin: 50% 80%;
   width: 2%;
 }
 .m-transition{
@@ -150,11 +154,11 @@ padding: 12px;
 }
 .seconds {
   background: #f00;
-  height: 45%;
+  height: 60%;
   left: 49.5%;
   position: absolute;
-  top: 14%;
-  transform-origin: 50% 80%;
+  top: 5%;
+  transform-origin: 50% 75%;
   width: 1%;
   z-index: 8;
 }
