@@ -7,8 +7,8 @@ $(document).ready(function() {
 	$(activePage + "-li").addClass("active"); //set the navbar link to active
 	$(activePage + "-page").removeClass("no-display"); //display the page
 	$("#digitalClock").removeClass("no-display"); //display the digital clock
+	
 	var myClock = new AnalogClock();
-  
   $("#clockDigital-btn").click(function(){
   	$("#analogClock").addClass("no-display");
   	$("#digitalClock").removeClass("no-display");
@@ -72,9 +72,9 @@ $(document).ready(function() {
   lastS = Number(myClock.now().getSeconds());
   updateClock();
 
-	//remove the "active" class from the old nav item and add it to the new one
-	//add "no-display" class to the old page, and remove it from the new.
-	function switchActive(newActive){
+//remove the "active" class from the old nav item and add it to the new one
+//add "no-display" class to the old page, and remove it from the new.
+    function switchActive(newActive){
 		$(activePage + "-li").removeClass("active");
 		$(activePage + "-page").addClass("no-display");
 		activePage = newActive;
