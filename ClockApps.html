@@ -76,7 +76,14 @@
     </div>
   <div id="stopwatch-page" class="container no-display">
     <div class="jumbotron">
-      <h1><span id="stopwatch">00:00:00</span><span id="stopwatchMS" class="msec">00</span></h1>
+      <div class="stopwatch-container">
+      	<div class="sw-readout-box">
+      		<span id="stopwatch">00:00:00</span><span id="stopwatchMS" class="msec">00</span>
+      	</div>
+      	<div class="sw-progress-container">
+      		<div id="sw-progress"></div>
+      	</div>
+      </div>
       <div class="row">
         <div class="col-xs-1 col-xs-offset-4">
           <button id="lapReset-btn" class="btn btn-primary hidden">

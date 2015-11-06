@@ -157,6 +157,7 @@ $(document).ready(function() {
 		if (timerBackReset) {
 			myTimer.backspace();
 		} else {
+			$("#timer-numpad").removeClass("no-display");
 			$("#timerBackspace-span").removeClass("glyphicon-refresh");
 			$("#timerBackspace-span").addClass("glyphicon-chevron-left");
 			myTimer.reset();
@@ -166,6 +167,7 @@ $(document).ready(function() {
 	$("#timerPlayPause-btn").click(function(){
 		if (timerPlayPause) {
 			$("#timerBackspace-btn").addClass("hidden");
+			$("#timer-numpad").addClass("no-display");
 			if (timerResume) {
 				myTimer.resume();
 			} else {

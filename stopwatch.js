@@ -15,6 +15,7 @@ function Stopwatch(){
 		lapTime = new Date(swCurrent - lastLap);
 		$("#stopwatch").text(formatUTCTime(swElapsed));
 		$("#stopwatchMS").text(formatMsec(swElapsed));
+		$("#sw-progress").css('transform','rotate(' + ((swElapsed.getSeconds() * 6) + (swElapsed.getMilliseconds() * .006))+ 'deg)');
 		rafStopwatch = requestAnimationFrame(this.refresh.bind(this));
 	}
 	Stopwatch.prototype.resume = function(){
