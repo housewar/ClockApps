@@ -104,14 +104,43 @@ $(document).ready(function() {
 	var myStopwatch = new Stopwatch(); //object constructor in stopwatch.js
 	var swResume = false; //Sets the play button to start from zero, not resume.
 	
+	function updateStopwatch(raf) {
+		$("#stopwatch").text(formatUTCTime(myStopwatch.elapsed()));
+		$("#stopwatchMS").text(formatMsec(myStopwatch.elapsed()));
+		if (myStopwatch.lapCount > 0){
+			$("#sw-progress").css('transform','rotate(' + ( 360 * myStopwatch.elapsedLap() / myStopwatch.lastLapTime ) + 'deg)');
+		}
+		if (raf){
+		rafStopwatch = requestAnimationFrame(updateStopwatch);
+		}
+	}
+	
+	function swAddLap(){
+		$("#lap-output-count").prepend("<p class=\"lap-entry\"></p>");
+		$("#lap-output-lap").prepend("<p class=\"lap-entry\"></p>");
+		$("#lap-output-split").prepend("<p class=\"lap-entry\"></p>");
+		$("#lap-output-count p:first-child").text("#" + myStopwatch.lapCount);
+		$("#lap-output-lap p:first-child").text(formatUTCTime(myStopwatch.splitTime) + "." + formatMsec(myStopwatch.splitTime));
+		$("#lap-output-split p:first-child").text(formatUTCTime(myStopwatch.lapTime) + "." + formatMsec(myStopwatch.lapTime));
+	}
+	
+	function swReset(){
+		$("#stopwatch").text("00:00:00");
+		$("#stopwatchMS").text("00");
+		$(".lap-entry").remove();
+		$("#sw-progress").css('transform','rotate(0deg)');
+	}
+	
 	$("#playPause-btn").click(function(){
 		if (playPause){
 			playPause = false; //change playPause btn function to pause
 			lapReset = true; //change lapReset btn function to lap
 			if (swResume){
 			myStopwatch.resume(); //resume from pause
+			updateStopwatch(true);
 			}else{
 			myStopwatch.start(); //start from zero
+			updateStopwatch(true);
 			}
 			$("#playPause-span").removeClass("glyphicon-play");
 			$("#playPause-span").addClass("glyphicon-pause");
@@ -122,7 +151,9 @@ $(document).ready(function() {
 			swResume = true; //pressing play will resume, not start
 			playPause = true; //change playPause btn function to play
 			lapReset = false; //change lapReset btn function to reset
+			cancelAnimationFrame(rafStopwatch);
 			myStopwatch.pause();
+			updateStopwatch(false);
 			$("#playPause-span").removeClass("glyphicon-pause");
 			$("#playPause-span").addClass("glyphicon-play");
 			$("#lapReset-span").removeClass("glyphicon-repeat");
@@ -133,8 +164,10 @@ $(document).ready(function() {
 	$("#lapReset-btn").click(function(){
 		if (lapReset){
 			myStopwatch.lap();
+			swAddLap();
 		} else {
-			myStopwatch.reset();
+			swReset();
+			//myStopwatch.reset();
 			lapReset = true; //change lapReset btn function to lap
 			swResume = false; //set play button function to start from zero, not resume
 			$("#lapReset-btn").addClass("hidden"); //hide the reset button
