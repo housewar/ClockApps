@@ -169,7 +169,6 @@ padding: 12px;
 .stopwatch-container {
   margin: 0 auto;
   border-radius: 50%;
-  background: #fff;
   position: relative;
   height: 300px;
   width: 300px;
@@ -177,10 +176,9 @@ padding: 12px;
   margin-bottom: 20px;
 }
 .sw-readout-box {
-  width: 75%;
+  width: 100%;
   height: 20%;
   position: absolute;
-  left: 12.5%;
   top: 40%;
   font-size: 3vw;
   text-align: center
@@ -208,4 +206,38 @@ padding: 12px;
 	height: 6%;
 	top: -4%;
 	background:#f00;
+}
+.pomodoro-container {
+  margin: 0 auto;
+  border-radius: 50%;
+  position: relative;
+  height: 300px;
+  width: 300px;
+  border: 6px solid #000;
+  margin-bottom: 20px;
+}
+.pomo-readout-box {
+  width: 100%;
+  height: 30%;
+  position: absolute;
+  top: 35%;
+  font-size: 5vw;
+  text-align: center;
+}
+.pomo-fill {
+  position: absolute;
+  margin: 2px 2px 2px 2px;
+  border-radius: 50%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+/*
+  background: linear-gradient(
+  	  #fff,
+      #fff 15%,
+      #08f 15%,
+      #08f 85%
+    );
+*/
 }

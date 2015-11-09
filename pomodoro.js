@@ -1,8 +1,9 @@
 function Pomodoro(){
 	this.workMin = 0;
 	this.breakMin = 0;
+	this.fullTime = 0;
 	var pomoEnd;
-	var pomoLeft;
+	this.pomoLeft;
 	var pomoNow = new Date();
 
 	Pomodoro.prototype.setWork = function(value){
@@ -27,13 +28,13 @@ function Pomodoro(){
 	
 	Pomodoro.prototype.timeLeft = function(){
 		pomoNow = new Date();
-		pomoLeft = new Date(Number(pomoEnd) - Number(pomoNow));
-		pomoDisplay = new Date(Math.abs(Math.ceil(pomoLeft / 1000) * 1000));
+		this.pomoLeft = new Date(Number(pomoEnd) - Number(pomoNow));
+		pomoDisplay = new Date(Math.abs(Math.ceil(this.pomoLeft / 1000) * 1000));
 		return pomoDisplay;
 	}
 	
 	Pomodoro.prototype.negChk = function(){
-		if (Number(pomoLeft) <= -1000) {
+		if (Number(this.pomoLeft) <= -1000) {
 		return "-"
 		} else {
 		return ""
@@ -41,15 +42,19 @@ function Pomodoro(){
 	}
 	
 	Pomodoro.prototype.workStart = function(){
-		pomoEnd = new Date();
+		pomoNow = new Date()
+		pomoEnd = new Date(pomoNow);
 		pomoEnd.setHours(	pomoEnd.getHours(),
 							pomoEnd.getMinutes() + this.workMin,
-							pomoEnd.getSeconds())
+							pomoEnd.getSeconds());
+		this.fullTime = new Date(Number(pomoEnd) - Number(pomoNow));
 	}
 	Pomodoro.prototype.breakStart = function(){
+		pomoNow = new Date()
 		pomoEnd = new Date();
 		pomoEnd.setHours(	pomoEnd.getHours(),
 							pomoEnd.getMinutes() + this.breakMin,
-							pomoEnd.getSeconds())
+							pomoEnd.getSeconds());
+		this.fullTime = new Date(Number(pomoEnd) - Number(pomoNow));
 	}
 }

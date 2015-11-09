@@ -234,6 +234,9 @@ $(document).ready(function() {
 	function updatePomo(){
 		$("#pomodoroM").text(myPomodoro.negChk() + ("00" + myPomodoro.timeLeft().getUTCMinutes()).slice(-2));
 		$("#pomodoroS").text(("00" + myPomodoro.timeLeft().getUTCSeconds()).slice(-2));
+    	$(".pomo-fill").css('background', 'linear-gradient(#fff, #fff '
+    						+ Math.floor(1000 * Math.max(Number(myPomodoro.pomoLeft),0) / Number(myPomodoro.fullTime)) / 10 + '%,#08f '
+    						+ Math.floor(1000 * Math.max(Number(myPomodoro.pomoLeft),0) / Number(myPomodoro.fullTime)) / 10 + '%,#08f 100%)');
 		rafPomo = requestAnimationFrame(updatePomo);
 	}
 	
