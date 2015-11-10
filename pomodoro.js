@@ -3,7 +3,7 @@ function Pomodoro(){
 	this.breakMin = 0;
 	this.fullTime = 0;
 	var pomoEnd;
-	this.pomoLeft;
+	var pomoLeft;
 	var pomoNow = new Date();
 
 	Pomodoro.prototype.setWork = function(value){
@@ -28,13 +28,18 @@ function Pomodoro(){
 	
 	Pomodoro.prototype.timeLeft = function(){
 		pomoNow = new Date();
-		this.pomoLeft = new Date(Number(pomoEnd) - Number(pomoNow));
-		pomoDisplay = new Date(Math.abs(Math.ceil(this.pomoLeft / 1000) * 1000));
+		pomoLeft = new Date(Number(pomoEnd) - Number(pomoNow));
+		return pomoLeft;
+	}
+	Pomodoro.prototype.timeLeftDisplay = function(){
+		pomoNow = new Date();
+		pomoLeft = new Date(Number(pomoEnd) - Number(pomoNow));
+		pomoDisplay = new Date(Math.abs(Math.ceil(pomoLeft / 1000) * 1000));
 		return pomoDisplay;
 	}
 	
 	Pomodoro.prototype.negChk = function(){
-		if (Number(this.pomoLeft) <= -1000) {
+		if (Number(this.timeLeft()) <= -1000) {
 		return "-"
 		} else {
 		return ""

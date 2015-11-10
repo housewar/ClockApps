@@ -180,7 +180,8 @@ padding: 12px;
   height: 20%;
   position: absolute;
   top: 40%;
-  font-size: 3vw;
+  font-size: 48px;
+  line-height: 60px;
   text-align: center
 }
 .sw-readout-box.span{
@@ -221,7 +222,8 @@ padding: 12px;
   height: 30%;
   position: absolute;
   top: 35%;
-  font-size: 5vw;
+  font-size: 72px;
+  line-height: 90px;
   text-align: center;
 }
 .pomo-fill {
@@ -232,12 +234,10 @@ padding: 12px;
   bottom: 0;
   left: 0;
   right: 0;
-/*
-  background: linear-gradient(
-  	  #fff,
-      #fff 15%,
-      #08f 15%,
-      #08f 85%
-    );
-*/
+}
+#pomo-type {
+  position: absolute;
+  top: 15%;
+  width: 100%;
+  text-align: center;
 }

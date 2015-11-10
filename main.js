@@ -232,11 +232,11 @@ $(document).ready(function() {
 	var workBreak = true; //true = work, false = break
 	
 	function updatePomo(){
-		$("#pomodoroM").text(myPomodoro.negChk() + ("00" + myPomodoro.timeLeft().getUTCMinutes()).slice(-2));
-		$("#pomodoroS").text(("00" + myPomodoro.timeLeft().getUTCSeconds()).slice(-2));
+		$("#pomodoroM").text(myPomodoro.negChk() + ("00" + myPomodoro.timeLeftDisplay().getUTCMinutes()).slice(-2));
+		$("#pomodoroS").text(("00" + myPomodoro.timeLeftDisplay().getUTCSeconds()).slice(-2));
     	$(".pomo-fill").css('background', 'linear-gradient(#fff, #fff '
-    						+ Math.floor(1000 * Math.max(Number(myPomodoro.pomoLeft),0) / Number(myPomodoro.fullTime)) / 10 + '%,#08f '
-    						+ Math.floor(1000 * Math.max(Number(myPomodoro.pomoLeft),0) / Number(myPomodoro.fullTime)) / 10 + '%,#08f 100%)');
+    						+ Math.floor(1000 * Math.max(Number(myPomodoro.timeLeft()),0) / Number(myPomodoro.fullTime)) / 10 + '%,#08f '
+    						+ Math.floor(1000 * Math.max(Number(myPomodoro.timeLeft()),0) / Number(myPomodoro.fullTime)) / 10 + '%,#08f 100%)');
 		rafPomo = requestAnimationFrame(updatePomo);
 	}
 	
@@ -267,10 +267,12 @@ $(document).ready(function() {
 		if (workBreak) {
 			myPomodoro.workStart();
 			workBreak = false;
+			$("#pomo-type").text("WORK");
 			updatePomo();
 		} else {
 			myPomodoro.breakStart();
 			workBreak = true;
+			$("#pomo-type").text("BREAK");
 		}
 	});
 });
